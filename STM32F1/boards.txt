@@ -211,6 +211,15 @@ genericSTM32F103C.menu.upload_method.BMPMethod.upload.protocol=gdb_bmp
 genericSTM32F103C.menu.upload_method.BMPMethod.upload.tool=bmp_upload
 genericSTM32F103C.menu.upload_method.BMPMethod.build.upload_flags=-DCONFIG_MAPLE_MINI_NO_DISABLE_DEBUG
 
+genericSTM32F103C.menu.upload_method.DFURTCUploadMethod=STM32duino bootloader (RTC)
+genericSTM32F103C.menu.upload_method.DFURTCUploadMethod.upload.protocol=maple_dfu
+genericSTM32F103C.menu.upload_method.DFURTCUploadMethod.upload.tool=maple_upload
+genericSTM32F103C.menu.upload_method.DFURTCUploadMethod.build.upload_flags=-DSERIAL_USB -DGENERIC_BOOTLOADER -DBOOTLOADER_RTC_FLAG
+genericSTM32F103C.menu.upload_method.DFURTCUploadMethod.build.vect=VECT_TAB_ADDR=0x8002000
+genericSTM32F103C.menu.upload_method.DFURTCUploadMethod.build.ldscript=ld/bootloader_20.ld
+genericSTM32F103C.menu.upload_method.DFURTCUploadMethod.upload.usbID=1EAF:0003
+genericSTM32F103C.menu.upload_method.DFURTCUploadMethod.upload.altID=2
+
 ########################### Generic STM32F103R ###########################
 
 genericSTM32F103R.name=Generic STM32F103R series

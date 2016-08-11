@@ -40,6 +40,8 @@
 
 #include "wirish.h"
 
+#include <libmaple/bkp.h>
+
 /*
  * Hooks used for bootloader reset signalling
  */
@@ -318,6 +320,15 @@ static void rxHook(unsigned hook, void *ignored) {
                     return;
                 }
             }
+
+#ifdef BOOTLOADER_RTC_FLAG
+            // Write a magic flag into the RTC register 10 to ensure we reboot
+            // into persistent bootloader mode
+            bkp_init();
+            bkp_enable_writes();
+            bkp_write(10, 0x424C);
+            bkp_disable_writes();
+#endif
 
 #ifdef SERIAL_USB 
             // Got the magic sequence -> reset, presumably into the bootloader.
